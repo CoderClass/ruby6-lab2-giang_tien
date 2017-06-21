@@ -10,10 +10,11 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Welcom #{@user.name}"
       session[:user_id] = @user.id
+      redirect_to users_path
     else
       flash[:error] = "Error: #{@user.errors.full_messages.to_sentence}"
+      redirect_to root_path
     end
-    redirect_to root_path
   end
 
 

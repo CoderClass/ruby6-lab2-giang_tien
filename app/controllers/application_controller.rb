@@ -13,5 +13,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :signed_in?
 
+  def require_login
+    unless signed_in?
+      flash[:alert] = "Log in to continue"
+      redirect_to root_path 
+    end
+  end
+
+  
 
 end
